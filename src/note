@@ -1,0 +1,3 @@
+npm init --y
+npm install express mongoose cors dotenv helmet hpp xss-clean express-mongo-sanitize express-rate-limit jsonwebtoken body-parser
+
