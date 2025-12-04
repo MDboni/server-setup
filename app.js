@@ -3,8 +3,8 @@ import router from "./src/routes/api.js";
 import bodyParser from "body-parser";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
-import mongoSanitize from "express-mongo-sanitize";
-import xss from "xss-clean";
+// import mongoSanitize from "express-mongo-sanitize";
+// import xss from "xss-clean";
 import hpp from "hpp";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -14,8 +14,8 @@ const app = express();
 // Security Middlewares
 app.use(cors());
 app.use(helmet());
-app.use(mongoSanitize());
-app.use(xss());
+// app.use(mongoSanitize());
+// app.use(xss());
 app.use(hpp());
 
 // Body Parser
@@ -27,6 +27,13 @@ const limiter = rateLimit({
   max: 3000,
 });
 app.use(limiter);
+
+// let URI = `mongodb+srv://${process.env.DATABASE_NAME}:${process.env.DATABASE_PASSWORD}@cluster0.lum0bq6.mongodb.net/${process.env.DB_NAME}?appName=Cluster0`;
+
+// mongoose.connect(URI)
+//   .then(() => console.log("✅ Database Connected"))
+//   .catch(err => console.error("❌ Database Error:", err));
+
 
 // MongoDB Connection
 let URI = "mongodb://127.0.0.1:27017/CollectionName";
